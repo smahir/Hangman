@@ -35,8 +35,7 @@
 				</div>
 				<span class="login100-form-title"> <%
  	if (request.getAttribute("error") != null) {
- %> <%=request.getAttribute("error")%><br />
-				<br /> <%
+ %> <%=request.getAttribute("error")%><br /> <br /> <%
  	}
  %>
 				</span>
