@@ -30,7 +30,7 @@
 					<img src="images/final.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="RegistrationServlet" method="post">
 					<span class="login100-form-title">
 						Enter username and password to create account
 					</span>

@@ -10,7 +10,7 @@ public class ConnectionManager {
 	// DB credentials
 	private final  String USERNAME = "root";
 	private final  String PASSWORD = "root";
-	private final  String CONN_STRING = "jdbc:mysql://localhost/hangman";
+	private final  String CONN_STRING = "jdbc:mysql://localhost/Hangman?useSSL=false&serverTimezone=UTC";
 	private final  String DRIVER = "com.mysql.jdbc.Driver";
 
 	// connection object

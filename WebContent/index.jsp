@@ -36,7 +36,7 @@
 				<%
 				}
 			%>
-				<form class="login100-form validate-form" action="login" method="post">
+				<form class="login100-form validate-form" action="LoginServlet" method="post">
 					<span class="login100-form-title">
 						Please login or register to play
 					</span>
