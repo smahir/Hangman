@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet{
 			
 			//set the username as an attribute
 			session.setAttribute("username", username);
-			String Message="You are sucessfully loged in - " +session.getAttribute("username") + "!";
+			String Message="Hi, " +session.getAttribute("username") + "!";
 			req.setAttribute("error", Message);
 			//forward to home jsp
 			req.getRequestDispatcher("play.jsp").forward(req, resp);
