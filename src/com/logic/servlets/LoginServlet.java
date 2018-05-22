@@ -1,4 +1,4 @@
-package com.test.servlets;
+package com.logic.servlets;
 
 import java.io.IOException;
 
@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.test.dao.ApplicationDao;
+import com.logic.dao.UserImplementation;
+import com.logic.dto.User;
 
+
+@SuppressWarnings("serial")
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet{
 	
@@ -22,7 +25,7 @@ public class LoginServlet extends HttpServlet{
 		String html = "<html><h3>Please login</h3></html>";
 		resp.getWriter().write(html+" ");
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/html/login.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
 		dispatcher.include(req, resp);
 	}
 	
@@ -33,23 +36,25 @@ public class LoginServlet extends HttpServlet{
 		String password = req.getParameter("password");
 		
 		//call DAO for validation logic
-		ApplicationDao dao= new ApplicationDao();
-		boolean isValidUser = dao.validateUser(username, password);
+		UserImplementation dao= new UserImplementation();
+		User ValidUser = dao.validateUser(username, password);
 		
 		//check if user is invalid and set up an error message
-		if(isValidUser){
+		if(ValidUser!=null){
 			//set up the HTTP session
 			HttpSession session = req.getSession();
 			
 			//set the username as an attribute
 			session.setAttribute("username", username);
+			String Message="You are sucessfully loged in - " +session.getAttribute("username") + "!";
+			req.setAttribute("error", Message);
 			//forward to home jsp
-			req.getRequestDispatcher("/html/home.jsp").forward(req, resp);
+			req.getRequestDispatcher("play.jsp").forward(req, resp);
 		}
 		else{
 			String errorMessage="Invalid Credentials, please login again!";
 			req.setAttribute("error", errorMessage);
-			req.getRequestDispatcher("/html/login.jsp").forward(req, resp);
+			req.getRequestDispatcher("index.jsp").forward(req, resp);
 			
 			
 		}

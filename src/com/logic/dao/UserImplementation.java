@@ -14,8 +14,8 @@ public class UserImplementation implements UserInterface {
 	@Override
 	public User validateUser(String username, String password)  {
 		User user = null;
-
-		String query = "SELECT * FROM user WHERE username=? and password=?";
+System.out.println("u " + username + " p "+password);
+		String query = "SELECT * FROM hangman.users WHERE username=? and password=?";
 		ResultSet rs = null;
 
 		try (PreparedStatement statement = connection.prepareStatement(query);) {
@@ -28,9 +28,11 @@ public class UserImplementation implements UserInterface {
 			if (rs.next()) {
 				user = new User();
 
-				user.setId(rs.getInt("userID"));
+				user.setId(rs.getInt("user_id"));
 				user.setUserName(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
+				
+System.out.println(user);
 				
 			}
 			rs.close();
@@ -44,7 +46,7 @@ public class UserImplementation implements UserInterface {
 	@Override
 	public boolean register(User user) throws SQLException {
 
-		String query = "INSERT INTO quiz.user( username, password) VALUES(?,?)";
+		String query = "INSERT INTO hangman.users( username, password) VALUES(?,?)";
 		try (PreparedStatement statement = connection.prepareStatement(query)) {
 
 			statement.setString(1, user.getUsername());

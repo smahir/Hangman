@@ -5,7 +5,9 @@ public class Word {
 	private int word_category;
 	private String word;
 	
-	
+	public Word() {
+		
+	}
 	
 	public Word(int word_id, int word_category, String word) {
 		super();

@@ -1,4 +1,4 @@
-package dao;
+package com.logic.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ public class ConnectionManager {
 	// DB credentials
 	private final  String USERNAME = "root";
 	private final  String PASSWORD = "";
-	private final  String CONN_STRING = "jdbc:mysql://localhost/";
+	private final  String CONN_STRING = "jdbc:mysql://localhost/hangman";
 	private final  String DRIVER = "com.mysql.jdbc.Driver";
 
 	// connection object

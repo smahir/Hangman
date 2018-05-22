@@ -1,7 +1,6 @@
 package com.logic.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,7 +23,7 @@ import com.logic.dto.Game;
 		public ArrayList<Game> getAllGamesByUser(int userId) throws SQLException {
 
 			Game game = null;
-			String query = "SELECT * FROM hangman.game where userId = ?;";
+			String query = "SELECT * FROM hangman.games where userId = ?;";
 
 			ResultSet rs = null;
 			try (PreparedStatement statement = connection.prepareStatement(query)) {
@@ -33,8 +32,8 @@ import com.logic.dto.Game;
 				while (rs.next()) {
 
 					game = new Game();
-					game.setId(rs.getInt("id"));
-					game.setUserID(rs.getInt("userid"));
+					game.setId(rs.getInt("game_id"));
+					game.setUserID(rs.getInt("user_id"));
 					game.setScore(rs.getInt("score"));
 					
 					list.add(game);
@@ -49,7 +48,7 @@ import com.logic.dto.Game;
 		public ArrayList<Game> getAllGames() throws SQLException {
 
 			Game game = null;
-			String query = "SELECT * FROM hangman.game;";
+			String query = "SELECT * FROM hangman.games;";
 
 			ResultSet rs = null;
 			try (PreparedStatement statement = connection.prepareStatement(query)) {
@@ -58,8 +57,8 @@ import com.logic.dto.Game;
 				while (rs.next()) {
 
 					game = new Game();
-					game.setId(rs.getInt("id"));
-					game.setUserID(rs.getInt("userid"));
+					game.setId(rs.getInt("game_id"));
+					game.setUserID(rs.getInt("user_id"));
 					game.setScore(rs.getInt("score"));
 					
 					list.add(game);
@@ -74,7 +73,7 @@ import com.logic.dto.Game;
 		@Override
 		public boolean addGame(Game game, int user_id) throws SQLException {
 
-			String query = "INSERT INTO hangman.game ( userID, score) VALUES(?,?)";
+			String query = "INSERT INTO hangman.games ( userID, score) VALUES(?,?)";
 			try (PreparedStatement statement = connection.prepareStatement(query);) {
 				statement.setInt(1, user_id);
 				statement.setInt(2, game.getScore());
@@ -89,7 +88,7 @@ import com.logic.dto.Game;
 
 			Game game = null;
 
-			String query = "SELECT * FROM hangman.game WHERE ID = ?";
+			String query = "SELECT * FROM hangman.games WHERE ID = ?";
 			ResultSet rs = null;
 
 			try (PreparedStatement statement = connection.prepareStatement(query);) {
@@ -102,8 +101,8 @@ import com.logic.dto.Game;
 
 					game = new Game();
 
-					game.setId(rs.getInt("ID"));
-					game.setUserID(rs.getInt("userID"));
+					game.setId(rs.getInt("game_id"));
+					game.setUserID(rs.getInt("user_id"));
 					game.setScore(rs.getInt("score"));
 	
 				}
