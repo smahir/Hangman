@@ -46,18 +46,22 @@ public class UserImplementation implements UserInterface {
 	@Override
 	public boolean register(User user) throws SQLException {
 
-		String query = "INSERT INTO users( username, password) VALUES(?,?)";
+		String query = "INSERT INTO users (username, password) VALUES(?,?)";
 		try (PreparedStatement statement = connection.prepareStatement(query)) {
 
 			statement.setString(1, user.getUsername());
 			statement.setString(2, user.getPassword());
 
 			statement.executeUpdate();
+			
+			System.out.println(user + "iz dao registracije");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return true;
+		
+		
 
 	}
 

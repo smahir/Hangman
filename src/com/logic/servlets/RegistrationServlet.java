@@ -33,6 +33,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		try {
 			if(dao.register(user)) {
 				request.getRequestDispatcher("index.jsp").forward(request, response);
+				//System.out.println(user + "iz servleta");
 			} else {
 				request.getRequestDispatcher("register.jsp").forward(request, response);
 			}
