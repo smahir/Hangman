@@ -50,10 +50,10 @@
 				<div class = "play-navbar">
 				<ul class="nav justify-content-center">
 						<li class="nav-item">
-						  <a class="nav-link active" href="index.html">Home</a>
+						  <a class="nav-link active" href="index.jsp">Home</a>
 						</li>
 						<li class="nav-item">
-						  <a class="nav-link" href="top10.html">Top 10</a>
+						  <a class="nav-link" href="top10.jsp">Top 10</a>
 						</li>
 						<li class="nav-item">
 						  <a class="nav-link" href="#">Log out</a>

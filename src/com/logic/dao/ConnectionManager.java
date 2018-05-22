@@ -9,7 +9,7 @@ public class ConnectionManager {
 	private static ConnectionManager instance = null;
 	// DB credentials
 	private final  String USERNAME = "root";
-	private final  String PASSWORD = "";
+	private final  String PASSWORD = "root";
 	private final  String CONN_STRING = "jdbc:mysql://localhost/hangman";
 	private final  String DRIVER = "com.mysql.jdbc.Driver";
 
