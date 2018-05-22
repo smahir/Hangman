@@ -67,7 +67,7 @@
 					</div>
 
 					<div class="text-center p-t-136">
-						<a class="txt2" href="index.html">
+						<a class="txt2" href="index.jsp">
 							Go back
 							<i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
 						</a>

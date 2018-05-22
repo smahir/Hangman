@@ -64,7 +64,7 @@
 				  </table>
 				  
 				<button type="button" class="btn btn-outline-secondary">
-					<a href="index.html">Home</a>
+					<a href="index.jsp">Home</a>
 				</button>
 
 			</div>
