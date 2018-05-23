@@ -38,15 +38,24 @@
 				}
 			%>
 			</span>
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="post">
 				
 					
 					<span class="login100-form-title">
 						Take a guess!
 					</span>
+					<div id="wordHolder">wordHolder</div>
+					<div id="clueHolder">category: </div>
+					<div id="guesses">Previous guesses:</div>
+					<div id="UserGuess"> 
+					<label>Your guess: </label>
+						<input  id="UserGuess" type = "text">
+					</div>				
 					
+					<input 	id="button" type="submit" value="Try!">
 				</form>
-
+				<form><input type="text" id="dummy" ></form>
+				
 				<div class = "play-navbar">
 				<ul class="nav justify-content-center">
 						<li class="nav-item">

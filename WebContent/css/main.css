@@ -82,8 +82,8 @@ ul, li {
 
 /*---------------------------------------------*/
 input {
-	outline: none;
-	border: none;
+	outline: 1px;
+	border: 1px;
 }
 
 textarea {
@@ -508,4 +508,90 @@ iframe {
     visibility: visible;
     opacity: 1;
   }
+}
+
+#gameTitle{
+ margin-top:100px;
+ text-align:center;
+ font-size:40px;
+ color:#fff;}
+
+.button{font-size:17px;
+ width:100px;
+ margin:auto;
+ margin-top:20px;
+ cursor:pointer;
+ border:solid 1px white;
+ border-radius:4px;
+ text-align:center;
+ color:#fff;}
+
+.button:hover{
+ background-color:#6AB0FD;}
+
+#replay{
+ margin-left:0px;}
+ 
+
+
+
+
+
+#wordHolder{
+ margin-top:50px;
+ margin-left:150px;
+}
+ 
+#clueHolder{
+ margin-top:130px;
+ margin-left:150px;
+}
+ 
+#guesses{
+ margin-top:20px;
+ margin-left:150px;
+}
+ 
+#pixHolder{
+ margin-left:30px;
+ width:75px;
+ float:left;
+ overflow:hidden;
+}
+ 
+#pixHolder img{
+ position:relative;}
+ 
+#UserGuess{
+ margin-top:20px;
+ margin-left:150px;
+ font-size:34px;
+ color:#fff;
+}
+ 
+.tile{
+ height:40px;
+ width:40px;
+ float:left;
+ margin-right:10px;
+ background-color:white;
+ text-align:center;
+ font-size:24px;
+ color:#333;
+ padding-top:5px;
+}
+ 
+#finalMessage{
+ text-align:center;
+ font-size:40px;
+ color:#fff;
+ width:90%;
+ margin:auto;
+ margin-top:100px;
+}
+ 
+#dummy{
+ position:absolute;
+ left:-200px;
+ top:0px;
 }

@@ -23,7 +23,7 @@ import com.logic.dto.Game;
 		public ArrayList<Game> getAllGamesByUser(int userId) throws SQLException {
 
 			Game game = null;
-			String query = "SELECT * FROM hangman.games where userId = ?;";
+			String query = "SELECT * FROM hangman.games where user_id = ? ;";
 
 			ResultSet rs = null;
 			try (PreparedStatement statement = connection.prepareStatement(query)) {
@@ -35,7 +35,7 @@ import com.logic.dto.Game;
 					game.setId(rs.getInt("game_id"));
 					game.setUserID(rs.getInt("user_id"));
 					game.setScore(rs.getInt("score"));
-					
+					System.out.println(game);
 					list.add(game);
 
 				}
