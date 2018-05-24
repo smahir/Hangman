@@ -40,27 +40,18 @@
 						<th score="col">Game ID</th>
 					  </tr>
 					</thead>
-					<tbody>
-					  <tr>
-						<th scope="row">1</th>
-						<td>Mark</td>
-						<td>100</td>
-						<td>5</td>
-					  </tr>
-					  <tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>90</td>
-						<td>2</td>
-					  </tr>
-					  <tr>
-						<th scope="row">3</th>
-						<td>Larry</td>
-						<td>66</td>
-						<td>80</td>
-					  </tr>
-					  
-					</tbody>
+					<c:forEach items="${gameList}" var="user" varStatus="counter">
+						<tr>
+							<td>${counter.count}</td>
+							<td>${gameList.user_id}</td>
+							<td>${gameList.score}</td>
+							<td>${gameList.game_id}</td>
+							
+							
+							<td></td>
+
+						</tr>
+					</c:forEach>
 				  </table>
 				  
 				<button type="button" class="btn btn-outline-secondary">
