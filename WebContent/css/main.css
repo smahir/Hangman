@@ -155,6 +155,15 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
 
+.tastatura {
+	padding: 50px 10px 10px 10px;
+	float: right;
+}
+.login100-pic js-tilt{
+	float: left;
+}
+
+
 .limiter {
   width: 100%;
   margin: 0 auto;
