@@ -26,26 +26,39 @@
 <!--===============================================================================================-->
 </head>
 <body>
-
+	<%
+		if (session.getAttribute("username") == null) {
+			response.sendRedirect("index.jsp");
+		}
+	%>
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-loginplay">
-				<div class="login100-pic js-tilt" data-tilt>
+				<div class="login100-pic js-tilt" style="float: left;" data-tilt>
 					<img src="images/1.png" alt="IMG">
+				</div>
+				<div class="tastatura" style="float: right;">
+				
+					
+					<span class="login100-form-title"> Take a guess! <br><br>
+						<p>Word to guess: ____________</p>
+						<p>Mistakes left: 4</p>
+
+					</span>
+				
+					<form action="">
+						<input type="guess" class="form-control" placeholder="Enter word or letter">
+						<br>
+						<button type="submit" class="btn btn-outline-secondary">Submit</button>
+					</form>
+
 				</div>
 				<span class="login100-form-title"> <%
  	if (request.getAttribute("error") != null) {
- %> <%=request.getAttribute("error")%><br />
-				<br /> <%
+ %> <%=request.getAttribute("error")%><br /> <br /> <%
  	}
  %>
 				</span>
-				<form class="login100-form validate-form">
-
-
-					<span class="login100-form-title"> Take a guess! </span>
-
-				</form>
 
 				<div class="play-navbar">
 					<ul class="nav justify-content-center">
