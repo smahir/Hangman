@@ -24,7 +24,7 @@ public class AuthenticationFilter implements Filter{
 			throws IOException, ServletException {
 		//pre-processing
 		HttpServletRequest request = (HttpServletRequest)arg0;
-		if(request.getRequestURI().startsWith("/HPlusSample/orderHistory")||
+		if(request.getRequestURI().startsWith("/Hangman/play")||
 				request.getRequestURI().startsWith("/HPlusSample/getProfileDetails")){
 			HttpSession session = request.getSession();
 			if(session.getAttribute("username")==null){

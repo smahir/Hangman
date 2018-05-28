@@ -57,6 +57,9 @@
 				<button type="button" class="btn btn-outline-secondary">
 					<a href="index.jsp">Home</a>
 				</button>
+				<button type="button" class="btn btn-outline-secondary">
+					<a href="play.jsp">Play</a>
+				</button>
 
 			</div>
 		</div>

@@ -12,10 +12,10 @@ public class UserImplementation implements UserInterface {
 	Connection connection = ConnectionManager.getInstance().getConnection();
 
 	@Override
-	public User validateUser(String username, String password)  {
+	public User validateUser(String username, String password) {
 		User user = null;
-System.out.println("u " + username + " p "+password);
-		String query = "SELECT * FROM hangman.users WHERE username=? and password=?";
+		System.out.println("u " + username + " p " + password);
+		String query = "SELECT * FROM users WHERE username=? and password=?";
 		ResultSet rs = null;
 
 		try (PreparedStatement statement = connection.prepareStatement(query);) {
@@ -31,9 +31,9 @@ System.out.println("u " + username + " p "+password);
 				user.setId(rs.getInt("user_id"));
 				user.setUserName(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
-				
-System.out.println(user);
-				
+
+				System.out.println(user);
+
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -46,20 +46,23 @@ System.out.println(user);
 	@Override
 	public boolean register(User user) throws SQLException {
 
-		String query = "INSERT INTO hangman.users( username, password) VALUES(?,?)";
+		String query = "INSERT INTO users (username, password) VALUES(?,?)";
 		try (PreparedStatement statement = connection.prepareStatement(query)) {
 
 			statement.setString(1, user.getUsername());
 			statement.setString(2, user.getPassword());
-			
+
 			statement.executeUpdate();
+			
+			System.out.println(user + "iz dao registracije");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return true;
+		
+		
 
 	}
-	
-	
+
 }

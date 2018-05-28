@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet{
 		String html = "<html><h3>Please login</h3></html>";
 		resp.getWriter().write(html+" ");
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp");
 		dispatcher.include(req, resp);
 	}
 	
@@ -33,19 +33,19 @@ public class LoginServlet extends HttpServlet{
 		//get the username from the login form
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
-		
-		//call DAO for validation logic
-		UserImplementation dao= new UserImplementation();
+
+		// call DAO for validation logic
+		UserImplementation dao = new UserImplementation();
 		User ValidUser = dao.validateUser(username, password);
-		
-		//check if user is invalid and set up an error message
-		if(ValidUser!=null){
-			//set up the HTTP session
+
+		// check if user is invalid and set up an error message
+		if (ValidUser != null) {
+			// set up the HTTP session
 			HttpSession session = req.getSession();
-			
-			//set the username as an attribute
+
+			// set the username as an attribute
 			session.setAttribute("username", username);
-			String Message="Hi, " +session.getAttribute("username") + "!";
+			String Message = "Hi, " + session.getAttribute("username") + "!";
 			req.setAttribute("error", Message);
 			//forward to home jsp
 			req.getRequestDispatcher("play.jsp").forward(req, resp);
@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet{
 		else{
 			String errorMessage="Invalid Credentials, please login again!";
 			req.setAttribute("error", errorMessage);
-			req.getRequestDispatcher("index.jsp").forward(req, resp);
+			req.getRequestDispatcher("login.jsp").forward(req, resp);
 			
 			
 		}
