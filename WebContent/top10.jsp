@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.ArrayList"%>
+
+<%@page import="java.util.List" buffer="8kb" isELIgnored="false"
+	session="true" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isThreadSafe="true" isErrorPage="false"
+	%>
+
+
 <html lang="en">
 <head>
 	<title>Top 10 - Hangman game</title>
@@ -31,28 +41,34 @@
 					Top 10 leaderboard 
 				</span>
 
+
 				<table class="table">
 					<thead>
 					  <tr>
 						<th scope="col">#</th>
 						<th scope="col">Username</th>
 						<th scope="col">Score</th>
-						<th score="col">Game ID</th>
+						<th scope="col">Game ID</th>
 					  </tr>
 					</thead>
-					<c:forEach items="${gameList}" var="user" varStatus="counter">
-						<tr>
-							<td>${counter.count}</td>
-							<td>${gameList.user_id}</td>
-							<td>${gameList.score}</td>
-							<td>${gameList.game_id}</td>
-							
-							
-							<td></td>
+					<tbody>
+					
+					</tbody>
+					<c:forEach items="${gameList}" var="game" varStatus="counter">
 
-						</tr>
+					<tr>
+						<td>${counter.count}</td>
+						<td>${gameList.userID}</td>
+						<td>${gameList.score}</td>
+						<td>${gameList.id}</td>
+
+
+						
+
+					</tr>
 					</c:forEach>
-				  </table>
+					</tbody>
+				</table>
 				  
 				<button type="button" class="btn btn-outline-secondary">
 					<a href="index.jsp">Home</a>

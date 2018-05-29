@@ -64,5 +64,13 @@ public class UserImplementation implements UserInterface {
 		
 
 	}
+	
+	
+	//  Password mora imati najmanje 8 karaktera, jedan broj, i jedno veliko slovo
+	@Override
+	public boolean validatePassword(String pass) {
+		return false;
+	}
+	
 
 }

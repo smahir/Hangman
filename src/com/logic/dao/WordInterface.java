@@ -18,6 +18,9 @@ public interface WordInterface {
 	
 	//**  uzima iz baze sve rijeèi i stavlja ih u listu
 	public ArrayList<Word> getAllWords() throws SQLException;
+	
+	//**  provjerava isravnost nove rijeci prije unosa u bazu
+	public boolean validateWord(Word word);
 
 	
 	

@@ -60,7 +60,7 @@ import com.logic.dto.Game;
 					game.setId(rs.getInt("game_id"));
 					game.setUserID(rs.getInt("user_id"));
 					game.setScore(rs.getInt("score"));
-					
+					System.out.println(game);
 					list.add(game);
 
 				}

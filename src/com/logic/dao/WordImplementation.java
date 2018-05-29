@@ -33,4 +33,11 @@ public class WordImplementation implements WordInterface {
 		public ArrayList<Word> getAllWords() throws SQLException{
 			return list;
 		}
+		
+		
+		//  Rijec mora imati najmanje 5 slova ( ne smije sadrzavati brojeve ili specijalne karaktere )
+		//  Rijec mora imati kategoriju
+		public boolean validateWord(Word word) {
+			return false;
+		};
 }

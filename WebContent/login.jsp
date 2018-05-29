@@ -20,14 +20,17 @@
 			%>
 			<em>LOGIN USER</em>
 			<form action="login" method="post">
-				<label>Username</label> <input type="text" name="username"
+				<label>Username</label> 
+				<input type="text" name="username"
 					id="username"><br />
-				<label>Password</label> <input type="password" name="password" id="password"><br /> 
+				<label>Password</label> 
+				<input type="password" name="password" 
+				id="password"><br /> 
 				<input 	type="submit" value="Login">
 			</form>
 		</div>
 	</section>
-	<!-- #products -->
+	
 
 
 

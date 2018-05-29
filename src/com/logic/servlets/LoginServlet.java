@@ -14,19 +14,19 @@ import com.logic.dto.User;
 
 
 @SuppressWarnings("serial")
-@WebServlet("/LoginServlet")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet{
-//	
-//	@Override
-//	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		//dispatch the request to login.jsp resource
-//		
-//		String html = "<html><h3>Please login</h3></html>";
-//		resp.getWriter().write(html+" ");
-//		
-//		RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
-//		dispatcher.include(req, resp);
-//	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//dispatch the request to login.jsp resource
+		
+		String html = "<html><h3>Please login</h3></html>";
+		resp.getWriter().write(html+" ");
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp");
+		dispatcher.include(req, resp);
+	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet{
 		else{
 			String errorMessage="Invalid Credentials, please login again!";
 			req.setAttribute("error", errorMessage);
-			req.getRequestDispatcher("index.jsp").forward(req, resp);
+			req.getRequestDispatcher("login.jsp").forward(req, resp);
 			
 			
 		}
