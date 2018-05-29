@@ -27,27 +27,73 @@
 </head>
 <body>
 <%
-		if (session.getAttribute("username") == null) {
+		/*if (session.getAttribute("username") == null) {
 			response.sendRedirect("index.jsp");
-		}
+		}*/
 	%>
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-loginplay">
 				<div class="login100-pic js-tilt" style="float: left;" data-tilt>
+				
 					<img src="images/1.png" alt="IMG">
 				</div>
 				<div class="tastatura" style="float: right;">
 				
 					
 					<span class="login100-form-title"> Take a guess! <br><br>
-						<p>Word to guess: ____________</p>
-						<p>Mistakes left: 4</p>
-
+						<p>Word to guess: 
+						<%
+ 							if (request.getAttribute("wordHolder") != null) {
+						 %>
+						<%=request.getAttribute("wordHolder")%>
+						<%
+ 							}
+						 %>
+						 </p>
+						 <br>
+						<p>Number of Mistakes: 
+						<%
+ 							if (request.getAttribute("wrongAnswers") != null) {
+						 %>
+						<%= request.getAttribute("wrongAnswers") %>
+						<%
+ 							} 
+						 %>
+						</p>
+						<br>
+						<p>Previous guesses: 
+						<%
+ 							if (request.getAttribute("previouseGuesses") != null) {
+						 %>
+						<%= request.getAttribute("previouseGuesses") %>
+						<%
+ 							} 
+						 %>
+						 </p>
+						<br>
+						<p>Score: 
+						<%
+ 							if (request.getAttribute("score") != null) {
+						 %>
+						<%= request.getAttribute("score") %>
+						<%
+ 							} 
+						 %>
+						 </p>
+						 <br>
+						<p><%
+				if (request.getAttribute("error") != null) {
+			%>
+			<%=request.getAttribute("error")%><br />
+			<%
+				}
+			%>
+						 </p>
 					</span>
 				
-					<form action="">
-						<input type="guess" class="form-control" placeholder="Enter word or letter">
+					<form action="GameServlet" method="post">
+						<input type="text" name="UserGuess" class="form-control" placeholder="Enter word or letter">
 						<br>
 						<button type="submit" class="btn btn-outline-secondary">Submit</button>
 					</form>
