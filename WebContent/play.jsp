@@ -35,13 +35,14 @@
 		<div class="container-login100">
 			<div class="wrap-loginplay">
 				<div class="login100-pic js-tilt" style="float: left;" data-tilt>
+				
 					<img src="images/1.png" alt="IMG">
 				</div>
 				<div class="tastatura" style="float: right;">
 				
 					
 					<span class="login100-form-title"> Take a guess! <br><br>
-						Word to guess: 
+						<p>Word to guess: 
 						<%
  							if (request.getAttribute("wordHolder") != null) {
 						 %>
@@ -49,6 +50,8 @@
 						<%
  							}
 						 %>
+						 </p>
+						 <br>
 						<p>Number of Mistakes: 
 						<%
  							if (request.getAttribute("wrongAnswers") != null) {
@@ -58,7 +61,35 @@
  							} 
 						 %>
 						</p>
-
+						<br>
+						<p>Previous guesses: 
+						<%
+ 							if (request.getAttribute("previouseGuesses") != null) {
+						 %>
+						<%= request.getAttribute("previouseGuesses") %>
+						<%
+ 							} 
+						 %>
+						 </p>
+						<br>
+						<p>Score: 
+						<%
+ 							if (request.getAttribute("score") != null) {
+						 %>
+						<%= request.getAttribute("score") %>
+						<%
+ 							} 
+						 %>
+						 </p>
+						 <br>
+						<p><%
+				if (request.getAttribute("error") != null) {
+			%>
+			<%=request.getAttribute("error")%><br />
+			<%
+				}
+			%>
+						 </p>
 					</span>
 				
 					<form action="GameServlet" method="post">

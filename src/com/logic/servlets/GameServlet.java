@@ -93,12 +93,15 @@ public class GameServlet extends HttpServlet {
 
 			int result = GameplayO.result();
 
+			
 			if (result == 1) {
 				Message="Letter is allready guessed.";
 
 			} else if (result == 2) {
-				System.out.println(GameplayO.getMyWord());
-				if (GameplayO.getMyWord().compareTo(GameplayO.getWord()) == 0)
+				//System.out.println(GameplayO.getMyWord());
+				if (GameplayO.getMyWord().compareTo(GameplayO.getWord()) == 0) {
+					String vinerMessage= "You win ! You have " + GameplayO.getPoints() + " points";
+				}
 					pogodjeno = true;
 
 			} else {
@@ -106,12 +109,14 @@ public class GameServlet extends HttpServlet {
 			}
 		}
 	
-	String vinerMessage= "YOu win ! You have " + GameplayO.getPoints() + " points";
+	
 			
 			//set the wordHolder as an attribute
 			//session.setAttribute("wordHolder",UserGuess);
 			req.setAttribute("wordHolder", GameplayO.getMyWord());
 			req.setAttribute("wrongAnswers", GameplayO.getLives());
+			req.setAttribute("previouseGuesses", GameplayO.getLetters());
+			req.setAttribute("score",GameplayO.getPoints());
 			//String Message="Hi, " +req.getAttribute("wordHolder") + "!";
 			req.setAttribute("error", Message);
 			
