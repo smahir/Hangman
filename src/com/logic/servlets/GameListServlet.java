@@ -41,4 +41,24 @@ public class GameListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		
+		GameImplementation dao = new GameImplementation();
+		
+
+		ArrayList<Game> gameList;
+		try {
+			gameList = dao.getAllGames();
+
+		request.setAttribute("gameList", gameList);
+		
+		request.getRequestDispatcher("top10.jsp").forward(request, response);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

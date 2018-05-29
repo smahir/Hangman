@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import com.logic.dto.GameplayO;
 import com.logic.dto.Word;
 
 import com.logic.dao.WordImplementation;
@@ -51,59 +51,73 @@ public class GameServlet extends HttpServlet {
 		String UserGuess = req.getParameter("UserGuess");
 		
 		
-		//call DAO for validation logic
-		
-		//Word word = new Word();
-		//Ovdje je postavljena jedna rijeè onako, koja bi se trebala izvuæ iz baze
-		String word = "sarajevo";
-		GameOmer objekat = new GameOmer();
-		//Ovaj niz predstavlja to da li je slovo pogoðeno ili nije pogoðeno
-		boolean[] letters = new boolean[26];
+		// Ovdje je postavljena jedna rijeè onako, koja bi se trebala izvuæ iz
+		// baze
+		GameplayO.setWord("sarajevo");
 
-		//Varijabla pogoðeno postat æe true kada korisnik pogodi kompletnu rijeè
+		// Varijabla myWord predstavlja ono što je korinsik pogodio, odnosno
+		// nije pogodio
+		GameplayO.setMyWord("");
+
+		// U ovoj ovdje petlji varijabli se dodjeljuju crtice umjesto slovo
+		// Ima onoliko crtica koliko je dugaèka rijeè
+		// for (int i = 0; i < word.length(); i++)
+		// myWord = myWord + "-";
+		GameplayO.setCrtice();
+
+		// Ovaj niz predstavlja to da li je slovo pogoðeno ili nije pogoðeno
+		// boolean[] letters = new boolean[26];
+		GameplayO.setFalse();
+
+		// Varijabla pogoðeno postat æe true kada korisnik pogodi kompletnu
+		// rijeè
 		boolean pogodjeno = false;
 		
-		int points = 100;
-		int brojac =0;
-		if (req.getAttribute("wrongAnswers")!=null) {
-		 brojac = ((Integer)req.getAttribute("wrongAnswers"))+1;
-		}
-		//set up the HTTP session
-		HttpSession session = req.getSession();
+		String Message="";
+
+		// int points = 100, brojac = 0;
+		GameplayO.setPoints(100);
+		GameplayO.setLives(0);
 		
-		//check if user is invalid and set up an error message
-		if(word!=null){
-			
-			
-			
-			//Varijabla myWord predstavlja ono što je korinsik pogodio, odnosno nije pogodio
-			String myWord = "";
-			
-			//U ovoj ovdje petlji varijabli se dodjeljuju crtice umjesto slovo
-			//Ima onoliko crtica koliko je dugaèka rijeè
-			for (int i = 0; i < word.length(); i++)
-				myWord = myWord + "-";
-			
-			
-			
+		String sLetter = UserGuess;
+
+		if (sLetter.length() == 1) {
+
+			// Brojaè se poveæava da se zna koliko æe se korisniku oduzeti
+			// bodova ako profula slovo
+			// brojac++;
+			GameplayO.setLives((GameplayO.getLives() + 1));
+
+			// char letter = sLetter.charAt(0);
+			GameplayO.setLetter(sLetter.charAt(0));
+
+			int result = GameplayO.result();
+
+			if (result == 1) {
+				Message="Letter is allready guessed.";
+
+			} else if (result == 2) {
+				System.out.println(GameplayO.getMyWord());
+				if (GameplayO.getMyWord().compareTo(GameplayO.getWord()) == 0)
+					pogodjeno = true;
+
+			} else {
+				Message = "You did not guess a letter.";
+			}
+		}
+	
+	String vinerMessage= "YOu win ! You have " + GameplayO.getPoints() + " points";
 			
 			//set the wordHolder as an attribute
 			//session.setAttribute("wordHolder",UserGuess);
-			req.setAttribute("wordHolder", myWord);
-			req.setAttribute("wrongAnswers", brojac);
+			req.setAttribute("wordHolder", GameplayO.getMyWord());
+			req.setAttribute("wrongAnswers", GameplayO.getLives());
 			//String Message="Hi, " +req.getAttribute("wordHolder") + "!";
-			//req.setAttribute("error", Message);
+			req.setAttribute("error", Message);
 			
 			//forward to play jsp
 			req.getRequestDispatcher("play.jsp").forward(req, resp);
-		}
-		else{
-			String errorMessage="Invalid !";
-			req.setAttribute("error", errorMessage);
-			req.getRequestDispatcher("play.jsp").forward(req, resp);
-			
-			
-		}
+		
 
 	}
 }

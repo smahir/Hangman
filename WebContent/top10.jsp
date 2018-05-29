@@ -2,7 +2,7 @@
 
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.logic.dao.Game"%>
+
 <%@page import="java.util.List" buffer="8kb" isELIgnored="false"
 	session="true" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isThreadSafe="true" isErrorPage="false"
@@ -58,9 +58,9 @@
 
 					<tr>
 						<td>${counter.count}</td>
-						<td>${game.userID}</td>
-						<td>${game.score}</td>
-						<td>${game.id}</td>
+						<td>${gameList.userID}</td>
+						<td>${gameList.score}</td>
+						<td>${gameList.id}</td>
 
 
 						
