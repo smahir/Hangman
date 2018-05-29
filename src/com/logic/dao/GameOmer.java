@@ -1,8 +1,8 @@
-package code;
+package com.logic.dao;
 
 import java.util.Scanner;
 
-public class Game {
+public class GameOmer {
 
 	public static void main(String[] args) {
 		runApp();

@@ -27,9 +27,9 @@
 </head>
 <body>
 <%
-		if (session.getAttribute("username") == null) {
+		/*if (session.getAttribute("username") == null) {
 			response.sendRedirect("index.jsp");
-		}
+		}*/
 	%>
 	<div class="limiter">
 		<div class="container-login100">
@@ -41,13 +41,28 @@
 				
 					
 					<span class="login100-form-title"> Take a guess! <br><br>
-						<p>Word to guess: ____________</p>
-						<p>Mistakes left: 4</p>
+						Word to guess: 
+						<%
+ 							if (request.getAttribute("wordHolder") != null) {
+						 %>
+						<%=request.getAttribute("wordHolder")%>
+						<%
+ 							}
+						 %>
+						<p>Number of Mistakes: 
+						<%
+ 							if (request.getAttribute("wrongAnswers") != null) {
+						 %>
+						<%= request.getAttribute("wrongAnswers") %>
+						<%
+ 							} 
+						 %>
+						</p>
 
 					</span>
 				
-					<form action="">
-						<input type="guess" class="form-control" placeholder="Enter word or letter">
+					<form action="GameServlet" method="post">
+						<input type="text" name="UserGuess" class="form-control" placeholder="Enter word or letter">
 						<br>
 						<button type="submit" class="btn btn-outline-secondary">Submit</button>
 					</form>
