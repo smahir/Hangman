@@ -1,10 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Home - Hangman game</title>
+<title>Admin - Hangman game</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -29,76 +26,48 @@
 <!--===============================================================================================-->
 </head>
 <body>
+	<%
+		if (session.getAttribute("username") == "Mahir");
+		{
 
+		}
+	%>
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="images/final.png" alt="IMG">
-				</div>
-				<%
-				if (request.getAttribute("error") != null) {
-			%>
-				<%=request.getAttribute("error")%><br />
-				<br />
-				<%
-				}
-			%>
+			<div class="wrap-login100-top10">
 
-				<%
-					if (session.getAttribute("username") == null) {
-
-					} else {
-						response.sendRedirect("play.jsp");
-					}
-				%>
-				<form class="login100-form validate-form" action="login"
-					method="post">
-					<span class="login100-form-title"> Please login or register
-						to play </span>
-
-					<div class="wrap-input100 validate-input"
-						data-validate="Username invalid">
-
-
-						<input class="input100" type="text" name="username"
-							placeholder="Username"> <span class="focus-input100"></span>
-						<span class="symbol-input100"> <i class="fa fa-user-o"
-							aria-hidden="true"></i>
-						</span>
+				<span class="login100-top10"> Add words </span>
+				<div class="form">
+				<form action="AddWordServlet" method="post">
+					<div class="form-group">
+						<label for="exampleFormControlInput1">Word</label> <input
+							type="word" name="word" class="form-control" id="exampleFormControlInput1"
+							placeholder="Minimum 5 letters">
 					</div>
-
-					<div class="wrap-input100 validate-input"
-						data-validate="Password is required">
-						<input class="input100" type="password" name="password"
-							placeholder="Password"> <span class="focus-input100"></span>
-						<span class="symbol-input100"> <i class="fa fa-lock"
-							aria-hidden="true"></i>
-						</span>
+					<div class="form-group">
+						<label for="exampleFormControlSelect1">Category</label> <select
+							class="form-control" id="exampleFormControlSelect1" name="category_id">
+							<option>1</option>
+							<option>3</option>
+							<option>5</option>
+						</select>
 					</div>
-
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" type="submit">Login</button>
-					</div>
-
-					<div class="text-center p-t-12">
-						<span class="txt1"> Forgot </span> <a class="txt2" href="#">
-							Username / Password? </a>
-					</div>
-
-					<div class="text-center p-t-136">
-						<a class="txt2" href="register.jsp"> Create your Account <i
-							class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
+					<div class="form-group">
+					<button class="btn btn-primary" type="submit">Submit</button>
 					</div>
 				</form>
+				</div>
+				<div class="row">
+				<button type="button" class="btn btn-outline-secondary">
+					<a href="index.jsp">Home</a>
+				</button>
+				<button type="button" class="btn btn-outline-secondary">
+					<a href="play.jsp">Play</a>
+				</button>
+				</div>
 			</div>
 		</div>
 	</div>
-
-
-
-
 	<!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
