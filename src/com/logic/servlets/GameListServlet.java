@@ -31,6 +31,8 @@ public class GameListServlet extends HttpServlet {
 		ArrayList<Game> gameList;
 		try {
 			gameList = dao.getAllGames();
+			
+			
 
 		request.setAttribute("gameList", gameList);
 		

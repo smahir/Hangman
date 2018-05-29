@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.logic.dao.UserImplementation;
+import com.logic.dto.GameplayO;
 import com.logic.dto.User;
 
 
 @SuppressWarnings("serial")
-@WebServlet("/login")
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet{
 	
 	@Override
@@ -48,6 +49,30 @@ public class LoginServlet extends HttpServlet{
 			String Message = "Hi, " + session.getAttribute("username") + "!";
 			req.setAttribute("error", Message);
 			//forward to home jsp
+			
+			// Ovdje je postavljena jedna rijeè onako, koja bi se trebala izvuæ iz
+			// baze
+			GameplayO.setWord("sarajevo");
+			//session.setAttribute(arg0, arg1);
+
+			// Varijabla myWord predstavlja ono što je korinsik pogodio, odnosno
+			// nije pogodio
+			GameplayO.setMyWord("");
+
+			// U ovoj ovdje petlji varijabli se dodjeljuju crtice umjesto slovo
+			// Ima onoliko crtica koliko je dugaèka rijeè
+			// for (int i = 0; i < word.length(); i++)
+			// myWord = myWord + "-";
+			GameplayO.setCrtice();
+
+			// Ovaj niz predstavlja to da li je slovo pogoðeno ili nije pogoðeno
+			// boolean[] letters = new boolean[26];
+			GameplayO.setFalse();
+			
+			// int points = 100, brojac = 0;
+			GameplayO.setPoints(100);
+			GameplayO.setLives(0);
+
 			req.getRequestDispatcher("play.jsp").forward(req, resp);
 		}
 		else{

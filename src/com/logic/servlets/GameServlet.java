@@ -51,42 +51,20 @@ public class GameServlet extends HttpServlet {
 		String UserGuess = req.getParameter("UserGuess");
 		
 		
-		// Ovdje je postavljena jedna rijeè onako, koja bi se trebala izvuæ iz
-		// baze
-		GameplayO.setWord("sarajevo");
-
-		// Varijabla myWord predstavlja ono što je korinsik pogodio, odnosno
-		// nije pogodio
-		GameplayO.setMyWord("");
-
-		// U ovoj ovdje petlji varijabli se dodjeljuju crtice umjesto slovo
-		// Ima onoliko crtica koliko je dugaèka rijeè
-		// for (int i = 0; i < word.length(); i++)
-		// myWord = myWord + "-";
-		GameplayO.setCrtice();
-
-		// Ovaj niz predstavlja to da li je slovo pogoðeno ili nije pogoðeno
-		// boolean[] letters = new boolean[26];
-		GameplayO.setFalse();
-
+		
 		// Varijabla pogoðeno postat æe true kada korisnik pogodi kompletnu
 		// rijeè
 		boolean pogodjeno = false;
 		
 		String Message="";
 
-		// int points = 100, brojac = 0;
-		GameplayO.setPoints(100);
-		GameplayO.setLives(0);
+		
 		
 		String sLetter = UserGuess;
 
 		if (sLetter.length() == 1) {
 
-			// Brojaè se poveæava da se zna koliko æe se korisniku oduzeti
-			// bodova ako profula slovo
-			// brojac++;
-			GameplayO.setLives((GameplayO.getLives() + 1));
+			
 
 			// char letter = sLetter.charAt(0);
 			GameplayO.setLetter(sLetter.charAt(0));
@@ -105,6 +83,10 @@ public class GameServlet extends HttpServlet {
 					pogodjeno = true;
 
 			} else {
+				// Brojaè se poveæava da se zna koliko æe se korisniku oduzeti
+				// bodova ako profula slovo
+				// brojac++;
+				GameplayO.setLives((GameplayO.getLives() + 1));
 				Message = "You did not guess a letter.";
 			}
 		}

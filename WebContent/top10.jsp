@@ -7,6 +7,11 @@
 	session="true" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isThreadSafe="true" isErrorPage="false"
 	%>
+	
+	<!-- taglib directive -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+	
 
 
 <html lang="en">
@@ -58,9 +63,9 @@
 
 					<tr>
 						<td>${counter.count}</td>
-						<td>${gameList.userID}</td>
-						<td>${gameList.score}</td>
-						<td>${gameList.id}</td>
+						<td>${game.userID}</td>
+						<td>${game.score}</td>
+						<td>${game.id}</td>
 
 
 						
