@@ -110,11 +110,11 @@
 					<ul class="nav justify-content-center">
 						<li class="nav-item"><a class="nav-link active"
 							href="index.jsp">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="top10.jsp">Top
+						<li class="nav-item"><a class="nav-link" href="top10">Top
 								10</a></li>
 						<li class="nav-item">
 							<form action="LogoutServlet" method="post">
-								<input type="submit" value="Logout">
+								<input class="btn btn-primary" type="submit" value="Logout">
 							</form>
 						</li>
 					</ul>

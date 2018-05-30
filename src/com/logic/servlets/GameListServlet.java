@@ -17,7 +17,7 @@ import com.logic. dto.Game;
 //import com.logic. dto.User;
 
 
-@WebServlet("/GameListServlet")
+@WebServlet("/top10")
 public class GameListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

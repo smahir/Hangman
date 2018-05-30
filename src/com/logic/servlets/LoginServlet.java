@@ -15,7 +15,7 @@ import com.logic.dto.User;
 
 
 @SuppressWarnings("serial")
-@WebServlet("/LoginServlet")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet{
 	
 	@Override
@@ -50,22 +50,22 @@ public class LoginServlet extends HttpServlet{
 			req.setAttribute("error", Message);
 			//forward to home jsp
 			
-			// Ovdje je postavljena jedna rijeè onako, koja bi se trebala izvuæ iz
+			// Ovdje je postavljena jedna rijeï¿½ onako, koja bi se trebala izvuï¿½ iz
 			// baze
 			GameplayO.setWord("sarajevo");
 			//session.setAttribute(arg0, arg1);
 
-			// Varijabla myWord predstavlja ono što je korinsik pogodio, odnosno
+			// Varijabla myWord predstavlja ono ï¿½to je korinsik pogodio, odnosno
 			// nije pogodio
 			GameplayO.setMyWord("");
 
 			// U ovoj ovdje petlji varijabli se dodjeljuju crtice umjesto slovo
-			// Ima onoliko crtica koliko je dugaèka rijeè
+			// Ima onoliko crtica koliko je dugaï¿½ka rijeï¿½
 			// for (int i = 0; i < word.length(); i++)
 			// myWord = myWord + "-";
 			GameplayO.setCrtice();
 
-			// Ovaj niz predstavlja to da li je slovo pogoðeno ili nije pogoðeno
+			// Ovaj niz predstavlja to da li je slovo pogoï¿½eno ili nije pogoï¿½eno
 			// boolean[] letters = new boolean[26];
 			GameplayO.setFalse();
 			
