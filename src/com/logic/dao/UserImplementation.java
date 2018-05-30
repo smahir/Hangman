@@ -12,10 +12,10 @@ public class UserImplementation implements UserInterface {
 	Connection connection = ConnectionManager.getInstance().getConnection();
 
 	@Override
-	public User validateUser(String username, String password)  {
+	public User validateUser(String username, String password) {
 		User user = null;
-
-		String query = "SELECT * FROM user WHERE username=? and password=?";
+		System.out.println("u " + username + " p " + password);
+		String query = "SELECT * FROM users WHERE username=? and password=?";
 		ResultSet rs = null;
 
 		try (PreparedStatement statement = connection.prepareStatement(query);) {
@@ -28,10 +28,12 @@ public class UserImplementation implements UserInterface {
 			if (rs.next()) {
 				user = new User();
 
-				user.setId(rs.getInt("userID"));
+				user.setId(rs.getInt("user_id"));
 				user.setUserName(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
-				
+
+				System.out.println(user);
+
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -44,20 +46,31 @@ public class UserImplementation implements UserInterface {
 	@Override
 	public boolean register(User user) throws SQLException {
 
-		String query = "INSERT INTO quiz.user( username, password) VALUES(?,?)";
+		String query = "INSERT INTO users (username, password) VALUES(?,?)";
 		try (PreparedStatement statement = connection.prepareStatement(query)) {
 
 			statement.setString(1, user.getUsername());
 			statement.setString(2, user.getPassword());
-			
+
 			statement.executeUpdate();
+			
+			System.out.println(user + "iz dao registracije");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return true;
+		
+		
 
 	}
 	
 	
+	//  Password mora imati najmanje 8 karaktera, jedan broj, i jedno veliko slovo
+	@Override
+	public boolean validatePassword(String pass) {
+		return false;
+	}
+	
+
 }

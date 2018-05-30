@@ -9,5 +9,7 @@ public interface UserInterface {
 
 	public boolean register(User user) throws SQLException;
 	
+	public boolean validatePassword(String pass);
+	
 
 }

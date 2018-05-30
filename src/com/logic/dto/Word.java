@@ -5,9 +5,11 @@ public class Word {
 	private int word_category;
 	private String word;
 	
+	public Word() {
+		
+	}
 	
-	
-	public Word(int word_id, int word_category, String word) {
+	public Word(String word, int word_category) {
 		super();
 		this.word_id = word_id;
 		this.word_category = word_category;

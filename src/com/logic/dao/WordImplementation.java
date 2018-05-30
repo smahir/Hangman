@@ -14,23 +14,43 @@ public class WordImplementation implements WordInterface {
 
 	ArrayList<Word> list = new ArrayList<>();
 	
-	//** dodaje rijeè u bazu (admin funkcija)
+	//** dodaje rijeï¿½ u bazu (admin funkcija)
 		public boolean addWord(Word word) throws SQLException{
-			return false;
+			
+			String query = "INSERT INTO words (word, category_id) VALUES(?,?)";
+			try (PreparedStatement statement = connection.prepareStatement(query)) {
+
+				statement.setString(1, word.getWord());
+				statement.setInt(2, word.getWord_category());
+
+				statement.executeUpdate();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return true;
+			
 		}
 
-		//**  èita random rijeè iz baze (za svrhu igre)
+		//**  ï¿½ita random rijeï¿½ iz baze (za svrhu igre)
 		public Word readWord() throws SQLException{
 			return null;
 		}
 		
-		//** uzima sve rijeèi iz kategorije ciji je id = cat_id i stavlja ih u listu
+		//** uzima sve rijeï¿½i iz kategorije ciji je id = cat_id i stavlja ih u listu
 		public ArrayList<Word> getAllWords(int cat_id) throws SQLException{
 			return list;
 		}
 		
-		//**  uzima iz baze sve rijeèi i stavlja ih u listu
+		//**  uzima iz baze sve rijeï¿½i i stavlja ih u listu
 		public ArrayList<Word> getAllWords() throws SQLException{
 			return list;
 		}
+		
+		
+		//  Rijec mora imati najmanje 5 slova ( ne smije sadrzavati brojeve ili specijalne karaktere )
+		//  Rijec mora imati kategoriju
+		public boolean validateWord(Word word) {
+			return false;
+		};
 }
