@@ -87,7 +87,7 @@
 					<a href='play'>Play</a>
 				</button> -->
 				<div class="nav-item"><a class="nav-link active"
-							href="play.jsp">Play</a></div>
+							href="play">Play</a></div>
 
 			</div>
 		</div>
