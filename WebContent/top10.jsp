@@ -59,7 +59,9 @@
 					<tbody>
 					
 					</tbody>
-					<c:forEach items="${gameList}" var="game" varStatus="counter">
+					 <c:forEach items="${gameList}" var="game" varStatus="counter" begin="1"
+               end="10" > 
+				
 
 					<tr>
 						<td>${counter.count}</td>

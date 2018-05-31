@@ -2,20 +2,20 @@ package com.logic.dto;
 
 
 
-public class Game {
+public class GameList {
 
 	private int id;
-	private int user_id;
+	private String username;
 	private int score;
 	
 
-	public Game(){
+	public GameList(){
 			
 		}
 
-	public Game(int id, int user_id, int score) {
+	public GameList(int id, int user_id, int score) {
 		this.id = id;
-		this.user_id = user_id;
+		this.username = username;
 		this.score = score;
 		
 	}
@@ -30,12 +30,12 @@ public class Game {
 	}
 
 
-	public int getUserId() {
-		return user_id;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserId(int user_id) {
-		this.user_id = user_id;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 
@@ -52,7 +52,7 @@ public class Game {
 	
 	@Override
 	public String toString() {
-		return "Game [Game number=" + id + ", user ID=" + user_id + ", score=" + score +"]";
+		return "Game [Game number=" + id + ", username=" + username + ", score=" + score +"]";
 	}
 
 }

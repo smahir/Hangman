@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.logic.dao.GameImplementation;
 import com.logic. dto.Game;
 //import com.logic. dto.User;
+import com.logic.dto.GameList;
 
 
 @WebServlet("/top10")
@@ -28,7 +29,7 @@ public class GameListServlet extends HttpServlet {
 		GameImplementation dao = new GameImplementation();
 		
 
-		ArrayList<Game> gameList;
+		ArrayList<GameList> gameList;
 		try {
 			gameList = dao.getAllGames();
 			
@@ -50,7 +51,7 @@ public class GameListServlet extends HttpServlet {
 		GameImplementation dao = new GameImplementation();
 		
 
-		ArrayList<Game> gameList;
+		ArrayList<GameList> gameList;
 		try {
 			gameList = dao.getAllGames();
 

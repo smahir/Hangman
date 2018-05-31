@@ -51,7 +51,7 @@ public class WordImplementation implements WordInterface {
 
 					word.setWord_id(rs.getInt("word_id"));
 					word.setWord(rs.getString("word"));
-					word.setWord_category(rs.getInt("word_category"));
+					word.setWord_category(rs.getInt("category_id"));
 	
 				}
 			

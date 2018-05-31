@@ -1,9 +1,7 @@
 package com.logic.servlets;
 
 import java.io.IOException;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,12 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.logic.dao.GameImplementation;
+
 import com.logic.dto.GameplayO;
-import com.logic.dto.Word;
 
-import com.logic.dao.WordImplementation;
-
-import com.logic.dao.GameOmer;
 
 @WebServlet("/GameServlet")
 public class GameServlet extends HttpServlet {
@@ -48,13 +44,19 @@ public class GameServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//get the username from the login form
+		
+		//get the HTTPSession object
+				HttpSession session = req.getSession();
+				
+				
+		//String UserGuess = req.getParameter("UserGuess").toUpperCase();
 		String UserGuess = req.getParameter("UserGuess");
 		
 		
 		
 		// Varijabla pogoðeno postat æe true kada korisnik pogodi kompletnu
 		// rijeè
-		boolean pogodjeno = false;
+		//boolean pogodjeno = false;
 		
 		String Message="";
 
@@ -70,6 +72,7 @@ public class GameServlet extends HttpServlet {
 			GameplayO.setLetter(sLetter.charAt(0));
 
 			int result = GameplayO.result();
+			System.out.println("result ="+result);
 
 			
 			if (result == 1) {
@@ -78,10 +81,17 @@ public class GameServlet extends HttpServlet {
 			} else if (result == 2) {
 				//System.out.println(GameplayO.getMyWord());
 				if (GameplayO.getMyWord().compareTo(GameplayO.getWord()) == 0) {
-					String vinerMessage= "You win ! You have " + GameplayO.getPoints() + " points";
+					//pogodjeno = true;
+					Message= "You win ! You have " + GameplayO.getPoints() + " points";
+					GameImplementation newGame= new GameImplementation();
+				
+					try {
+						newGame.addGame(GameplayO.getPoints(), (int) session.getAttribute("user_id"));
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-					pogodjeno = true;
-
 			} else {
 				// Brojaè se poveæava da se zna koliko æe se korisniku oduzeti
 				// bodova ako profula slovo
@@ -95,10 +105,10 @@ public class GameServlet extends HttpServlet {
 			
 			//set the wordHolder as an attribute
 			//session.setAttribute("wordHolder",UserGuess);
-		req.setAttribute("wordCategory", "kategorija");
+			req.setAttribute("wordCategory", GameplayO.getCategory());
 			req.setAttribute("wordHolder", GameplayO.getMyWord());
 			req.setAttribute("wrongAnswers", GameplayO.getLives());
-			req.setAttribute("previouseGuesses", GameplayO.getLetters());
+			req.setAttribute("previouseGuesses", GameplayO.getPreviousGuesses());
 			req.setAttribute("score",GameplayO.getPoints());
 			//String Message="Hi, " +req.getAttribute("wordHolder") + "!";
 			req.setAttribute("error", Message);

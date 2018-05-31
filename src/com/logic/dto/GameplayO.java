@@ -1,11 +1,20 @@
 package com.logic.dto;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.logic.dao.ConnectionManager;
+
 public class GameplayO {
 
+
 	private static String word;
+	private static String category;
 	private static String myWord;
 	private static char letter;
-	private static boolean[] letters;
+	private static String previousGuesses;
 	private static int points;
 	private static int lives;
 
@@ -21,6 +30,50 @@ public class GameplayO {
 		GameplayO.lives = lives;
 	}
 
+	
+	
+	public static String getPreviousGuesses() {
+		return previousGuesses;
+	}
+
+	public static void setPreviousGuesses(String previousGuesses) {
+		GameplayO.previousGuesses = previousGuesses;
+	}
+
+	public static String getCategory() {
+		
+		return category;
+	}
+
+	public static void setCategory(int category_id) {
+		Connection connection = ConnectionManager.getInstance().getConnection();
+		String query = "SELECT name FROM categories WHERE category_id=?";
+		ResultSet rs = null;
+		String catWord= "";
+
+		try (PreparedStatement statement = connection.prepareStatement(query);) {
+
+			statement.setInt(1, category_id);
+
+			rs = statement.executeQuery();
+
+			if (rs.next()) {
+
+				
+				catWord=rs.getString("name");
+				System.out.println(catWord);
+
+			}
+		
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		category = catWord;
+		
+	}
+	
 	public static int getLives() {
 		return lives;
 	}
@@ -30,16 +83,10 @@ public class GameplayO {
 	}
 
 	public static void setLetter(char letter) {
-		GameplayO.letter = letter;
+		GameplayO.letter = Character.toUpperCase(letter);
 	}
 
-	public static boolean[] getLetters() {
-		return letters;
-	}
-
-	public static void setLetters(boolean[] letters) {
-		GameplayO.letters = letters;
-	}
+	
 
 	public static String getMyWord() {
 		return myWord;
@@ -62,12 +109,15 @@ public class GameplayO {
 	// Metoda koja vraæa rezultat
 	public static int result() {
 
-		if (letters[GameplayO.getLetter() - 97]) {
+		//if (letters[GameplayO.getLetter() - 45]) {
+		System.out.println(previousGuesses);
+		if (previousGuesses.indexOf(GameplayO.getLetter())!=-1) {
 			return 1;
 
 		} else {
 
-			letters[GameplayO.getLetter() - 97] = true;
+			previousGuesses.concat(GameplayO.getLetter()+"");
+			System.out.println(previousGuesses);
 			if (exists()) {
 				modifyMyWord();
 				return 2;
@@ -86,19 +136,16 @@ public class GameplayO {
 	// Koristi se samo na poèetku kada se izvuèe nova rijeè
 	public static void setCrtice() {
 		for (int i = 0; i < word.length(); i++) {
-			myWord = myWord + "-";
+			myWord = myWord + "_";
 		}
 	}
 
 	// Metoda postavlja sva slova na poziciju da nisu pogoðena
 	// Kotisi se na poèetku kada se izvuèe nova rijeè
-	public static void setFalse() {
-		letters = new boolean[26];
-	}
 
 	public static boolean exists() {
 		for (int i = 0; i < word.length(); i++) {
-			if (letter == word.charAt(i))
+			if (letter == Character.toUpperCase(word.charAt(i)))
 				return true;
 		}
 		return false;
@@ -107,7 +154,7 @@ public class GameplayO {
 	public static void modifyMyWord() {
 		char[] mw = arrayWord(myWord);
 		for (int i = 0; i < mw.length; i++) {
-			if (word.charAt(i) == letter)
+			if (Character.toUpperCase(word.charAt(i)) == letter)
 				mw[i] = letter;
 		}
 		String w = "";

@@ -28,7 +28,7 @@ public class GameO {
 
 		// Ovaj niz predstavlja to da li je slovo pogoðeno ili nije pogoðeno
 		// boolean[] letters = new boolean[26];
-		GameplayO.setFalse();
+		//GameplayO.setFalse();
 
 		// Varijabla pogoðeno postat æe true kada korisnik pogodi kompletnu
 		// rijeè
