@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 
 import com.logic.dto.Game;
+import com.logic.dto.GameList;
 
 
 	
@@ -17,12 +18,12 @@ import com.logic.dto.Game;
 
 		Connection connection = ConnectionManager.getInstance().getConnection();
 
-		ArrayList<Game> list = new ArrayList<>();
+		ArrayList<GameList> list = new ArrayList<>();
 
 		@Override
-		public ArrayList<Game> getAllGamesByUser(int userId) throws SQLException {
+		public ArrayList<GameList> getAllGamesByUser(int userId) throws SQLException {
 
-			Game game = null;
+			GameList game = null;
 			String query = "SELECT games.game_id,users.username,games.score FROM games inner JOIN users on games.user_id=users.user_id  where user_id = ? ORDER BY games.score DESC";
 
 			ResultSet rs = null;
@@ -31,7 +32,7 @@ import com.logic.dto.Game;
 				rs = statement.executeQuery();
 				while (rs.next()) {
 
-					game = new Game();
+					game = new GameList();
 					game.setId(rs.getInt("game_id"));
 					game.setUsername(rs.getString("username"));
 					game.setScore(rs.getInt("score"));
@@ -45,9 +46,9 @@ import com.logic.dto.Game;
 
 		}
 		@Override
-		public ArrayList<Game> getAllGames() throws SQLException {
+		public ArrayList<GameList> getAllGames() throws SQLException {
 
-			Game game = null;
+			GameList games = null;
 			String query = "SELECT games.game_id,users.username,games.score FROM games inner JOIN users on games.user_id=users.user_id ORDER BY games.score DESC ";
 
 			ResultSet rs = null;
@@ -56,12 +57,12 @@ import com.logic.dto.Game;
 				rs = statement.executeQuery();
 				while (rs.next()) {
 
-					game = new Game();
-					game.setId(rs.getInt("game_id"));
-					game.setUsername(rs.getString("username"));
-					game.setScore(rs.getInt("score"));
+					games = new GameList();
+					games.setId(rs.getInt("game_id"));
+					games.setUsername(rs.getString("username"));
+					games.setScore(rs.getInt("score"));
 					
-					list.add(game);
+					list.add(games);
 
 				}
 			}
@@ -71,12 +72,12 @@ import com.logic.dto.Game;
 		}
 
 		@Override
-		public boolean addGame(Game game, int user_id) throws SQLException {
+		public boolean addGame(int score, int user_id) throws SQLException {
 
-			String query = "INSERT INTO hangman.games ( userID, score) VALUES(?,?)";
+			String query = "INSERT INTO hangman.games ( user_id, score) VALUES(?,?)";
 			try (PreparedStatement statement = connection.prepareStatement(query);) {
 				statement.setInt(1, user_id);
-				statement.setInt(2, game.getScore());
+				statement.setInt(2, score);
 				
 				statement.executeUpdate();
 			}
@@ -102,7 +103,7 @@ import com.logic.dto.Game;
 					game = new Game();
 
 					game.setId(rs.getInt("game_id"));
-					game.setUsername(rs.getString("username"));
+					game.setUserId(rs.getInt("user_id"));
 					game.setScore(rs.getInt("score"));
 	
 				}
