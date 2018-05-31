@@ -69,8 +69,21 @@ public class UserImplementation implements UserInterface {
 	//  Password mora imati najmanje 8 karaktera, jedan broj, i jedno veliko slovo
 	@Override
 	public boolean validatePassword(String pass) {
-		return false;
+		if (pass.length() < 8) {
+			return false;
+		} else {
+			for (int i = 0; i < pass.length(); i++) {
+				if (Character.isUpperCase(pass.charAt(i))) {
+				}
+			}
+
+			for (int i = 0; i < pass.length(); i++) {
+				if (Character.isDigit(pass.charAt(i))) {
+				}
+			}
+			return true;
+
 	}
-	
+	}
 
 }

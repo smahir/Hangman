@@ -51,6 +51,17 @@ public class WordImplementation implements WordInterface {
 		//  Rijec mora imati najmanje 5 slova ( ne smije sadrzavati brojeve ili specijalne karaktere )
 		//  Rijec mora imati kategoriju
 		public boolean validateWord(Word word) {
-			return false;
+			String wordd = word.getWord();
+			if (wordd.length() < 5) {
+				return false;
+			} else {
+				for (int i = 0; i < wordd.length(); i++) {
+					if (!Character.isLetter(wordd.charAt(i))) {
+						return false;
+					}
+				}
+
+			}
+			return true;
 		};
 }
