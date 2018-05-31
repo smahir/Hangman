@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.logic.dto.Game;
+
 import com.logic.dto.Word;
 
 public class WordImplementation implements WordInterface {
@@ -34,7 +34,32 @@ public class WordImplementation implements WordInterface {
 
 		//**  �ita random rije� iz baze (za svrhu igre)
 		public Word readWord() throws SQLException{
-			return null;
+			Word word = null;
+
+			String query = "SELECT * FROM words order by rand() limit 1 ";
+			ResultSet rs = null;
+
+			try (PreparedStatement statement = connection.prepareStatement(query);) {
+
+				//statement.setInt(1, word_id);
+
+				rs = statement.executeQuery();
+
+				if (rs.next()) {
+
+					word = new Word();
+
+					word.setWord_id(rs.getInt("word_id"));
+					word.setWord(rs.getString("word"));
+					word.setWord_category(rs.getInt("word_category"));
+	
+				}
+			
+			rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return word;
 		}
 		
 		//** uzima sve rije�i iz kategorije ciji je id = cat_id i stavlja ih u listu

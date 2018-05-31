@@ -23,7 +23,7 @@ import com.logic.dto.Game;
 		public ArrayList<Game> getAllGamesByUser(int userId) throws SQLException {
 
 			Game game = null;
-			String query = "SELECT * FROM games where user_id = ?";
+			String query = "SELECT games.game_id,users.username,games.score FROM games inner JOIN users on games.user_id=users.user_id  where user_id = ? ORDER BY games.score DESC";
 
 			ResultSet rs = null;
 			try (PreparedStatement statement = connection.prepareStatement(query)) {
@@ -33,9 +33,9 @@ import com.logic.dto.Game;
 
 					game = new Game();
 					game.setId(rs.getInt("game_id"));
-					game.setUserID(rs.getInt("user_id"));
+					game.setUsername(rs.getString("username"));
 					game.setScore(rs.getInt("score"));
-					System.out.println(game);
+					//System.out.println(game);
 					list.add(game);
 
 				}
@@ -48,7 +48,7 @@ import com.logic.dto.Game;
 		public ArrayList<Game> getAllGames() throws SQLException {
 
 			Game game = null;
-			String query = "SELECT * FROM games";
+			String query = "SELECT games.game_id,users.username,games.score FROM games inner JOIN users on games.user_id=users.user_id ORDER BY games.score DESC ";
 
 			ResultSet rs = null;
 			try (PreparedStatement statement = connection.prepareStatement(query)) {
@@ -58,9 +58,9 @@ import com.logic.dto.Game;
 
 					game = new Game();
 					game.setId(rs.getInt("game_id"));
-					game.setUserID(rs.getInt("user_id"));
+					game.setUsername(rs.getString("username"));
 					game.setScore(rs.getInt("score"));
-					System.out.println(game);
+					
 					list.add(game);
 
 				}
@@ -102,7 +102,7 @@ import com.logic.dto.Game;
 					game = new Game();
 
 					game.setId(rs.getInt("game_id"));
-					game.setUserID(rs.getInt("user_id"));
+					game.setUsername(rs.getString("username"));
 					game.setScore(rs.getInt("score"));
 	
 				}
