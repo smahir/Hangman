@@ -53,7 +53,7 @@
 						<th scope="col">#</th>
 						<th scope="col">Username</th>
 						<th scope="col">Score</th>
-						<th scope="col">Game ID</th>
+						<!--  <th scope="col">Game ID</th> -->
 					  </tr>
 					</thead>
 					<tbody>
@@ -63,9 +63,9 @@
 
 					<tr>
 						<td>${counter.count}</td>
-						<td>${game.userID}</td>
+						<td>${game.username}</td>
 						<td>${game.score}</td>
-						<td>${game.id}</td>
+						<!-- <td>${game.id}</td> -->
 
 
 						
@@ -75,12 +75,17 @@
 					</tbody>
 				</table>
 				  
-				<button type="button" class="btn btn-outline-secondary">
-					<a href="index.jsp">Home</a>
-				</button>
-				<button type="button" class="btn btn-outline-secondary">
-					<a href="play.jsp">Play</a>
-				</button>
+				<!--  <button type="button" class="btn btn-outline-secondary">
+					<a href='index' >Home</a>
+					</button> -->
+					<div class="nav-item"><a class="nav-link active"
+							href="index.jsp">Home</a></div>
+				
+				<!-- <button type="button" class="btn btn-outline-secondary">
+					<a href='play'>Play</a>
+				</button> -->
+				<div class="nav-item"><a class="nav-link active"
+							href="play.jsp">Play</a></div>
 
 			</div>
 		</div>

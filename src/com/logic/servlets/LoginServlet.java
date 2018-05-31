@@ -1,6 +1,8 @@
 package com.logic.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import com.logic.dao.UserImplementation;
 import com.logic.dto.GameplayO;
 import com.logic.dto.User;
+import com.logic.dao.WordImplementation;
+import com.logic.dto.Word;
 
 
 @SuppressWarnings("serial")
@@ -52,11 +56,22 @@ public class LoginServlet extends HttpServlet{
 			
 			// Ovdje je postavljena jedna rije� onako, koja bi se trebala izvu� iz
 			// baze
-			GameplayO.setWord("sarajevo");
-			//session.setAttribute(arg0, arg1);
+			WordImplementation wordDAO = new WordImplementation();
+			Word randWord=null;
+			try {
+				randWord = wordDAO.readWord();
+				GameplayO.setWord(randWord.getWord());
+				//session.setAttribute(arg0, arg1);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
 
 			// Varijabla myWord predstavlja ono �to je korinsik pogodio, odnosno
 			// nije pogodio
+			
 			GameplayO.setMyWord("");
 
 			// U ovoj ovdje petlji varijabli se dodjeljuju crtice umjesto slovo

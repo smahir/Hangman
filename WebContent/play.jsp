@@ -42,6 +42,15 @@
 				
 					
 					<span class="login100-form-title"> Take a guess! <br><br>
+						<p>HINT: 
+						<%
+ 							if (request.getAttribute("wordCategory") != null) {
+						 %>
+						<%=request.getAttribute("wordCategory")%>
+						<%
+ 							}
+						 %>
+						 </p>
 						<p>Word to guess: 
 						<%
  							if (request.getAttribute("wordHolder") != null) {
