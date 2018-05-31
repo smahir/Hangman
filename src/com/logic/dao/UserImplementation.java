@@ -32,7 +32,7 @@ public class UserImplementation implements UserInterface {
 				user.setUserName(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
 
-				System.out.println(user);
+				
 
 			}
 			rs.close();
@@ -54,7 +54,7 @@ public class UserImplementation implements UserInterface {
 
 			statement.executeUpdate();
 			
-			System.out.println(user + "iz dao registracije");
+			//System.out.println(user + "iz dao registracije");
 
 		} catch (SQLException e) {
 			e.printStackTrace();

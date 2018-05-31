@@ -21,6 +21,10 @@ public class Word {
 	public int getWord_id() {
 		return word_id;
 	}
+	
+	public void setWord_id(int id) {
+		this.word_id=id;
+	}
 
 
 	public int getWord_category() {

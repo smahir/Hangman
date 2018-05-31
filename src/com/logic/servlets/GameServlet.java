@@ -95,6 +95,7 @@ public class GameServlet extends HttpServlet {
 			
 			//set the wordHolder as an attribute
 			//session.setAttribute("wordHolder",UserGuess);
+		req.setAttribute("wordCategory", "kategorija");
 			req.setAttribute("wordHolder", GameplayO.getMyWord());
 			req.setAttribute("wrongAnswers", GameplayO.getLives());
 			req.setAttribute("previouseGuesses", GameplayO.getLetters());
