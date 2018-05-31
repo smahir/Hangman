@@ -74,7 +74,7 @@ import com.logic.dto.GameList;
 		@Override
 		public boolean addGame(int score, int user_id) throws SQLException {
 
-			String query = "INSERT INTO hangman.games ( user_id, score) VALUES(?,?)";
+			String query = "INSERT INTO games (user_id, score) VALUES(?,?)";
 			try (PreparedStatement statement = connection.prepareStatement(query);) {
 				statement.setInt(1, user_id);
 				statement.setInt(2, score);

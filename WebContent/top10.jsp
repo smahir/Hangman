@@ -81,7 +81,7 @@
 					<a href='index' >Home</a>
 					</button> -->
 					<div class="nav-item"><a class="nav-link active"
-							href="index.jsp">Home</a></div>
+							href="meni">Home</a></div>
 				
 				<!-- <button type="button" class="btn btn-outline-secondary">
 					<a href='play'>Play</a>
