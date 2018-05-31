@@ -32,8 +32,6 @@ public class UserImplementation implements UserInterface {
 				user.setUserName(rs.getString("username"));
 				user.setPassword(rs.getString("password"));
 
-				
-
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -53,24 +51,34 @@ public class UserImplementation implements UserInterface {
 			statement.setString(2, user.getPassword());
 
 			statement.executeUpdate();
-			
-			//System.out.println(user + "iz dao registracije");
+
+			// System.out.println(user + "iz dao registracije");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return true;
-		
-		
 
 	}
-	
-	
-	//  Password mora imati najmanje 8 karaktera, jedan broj, i jedno veliko slovo
+
+	// Password mora imati najmanje 8 karaktera, jedan broj, i jedno veliko slovo
 	@Override
 	public boolean validatePassword(String pass) {
-		return false;
-	}
-	
+		if (pass.length() < 8) {
+			return false;
+		} else {
+			for (int i = 0; i < pass.length(); i++) {
+				if (Character.isUpperCase(pass.charAt(i))) {
+				}
+			}
 
+			for (int i = 0; i < pass.length(); i++) {
+				if (Character.isDigit(pass.charAt(i))) {
+				}
+			}
+			return true;
+
+		}
+
+	}
 }
