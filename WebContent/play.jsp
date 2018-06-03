@@ -35,60 +35,58 @@
 
 		<div class="container-login100">
 			<div class="wrap-loginplay">
-				<span class="login100-form-title"> 
-				<%
- 					if (request.getAttribute("helloMessage") != null) {
- 				%> 
- 				<%=request.getAttribute("helloMessage")%><br /> <br /> 
- 				<%
- 					}
- 				%>
- 				
-							
+				<span class="login100-form-title"> <%
+ 	if (request.getAttribute("helloMessage") != null) {
+ %> <%=request.getAttribute("helloMessage")%><br /> <br /> <%
+ 	}
+ %>
+
+
 				</span>
 				<div class="login100-pic js-tilt" style="float: left;" data-tilt>
-					<%if (request.getAttribute("wrongAnswers") !=null){
- 					if ((int) (request.getAttribute("wrongAnswers")) ==0 ) {
- 				%>
-					<img src= "images/1.png" alt="IMG">
-						<%
- 					}
- 				%>	
- 				<%
- 					if ((int) (request.getAttribute("wrongAnswers")) ==1 ) {
- 				%>
-					<img src= "images/2.png" alt="IMG">
-						<%
- 					}
- 				%>	
- 				<%
- 					if ((int) (request.getAttribute("wrongAnswers")) ==2 ) {
- 				%>
-					<img src= "images/3.png" alt="IMG">
-						<%
- 					}
- 				%>	
- 				<%
- 					if ((int) (request.getAttribute("wrongAnswers")) ==3 ) {
- 				%>
-					<img src= "images/4.png" alt="IMG">
-						<%
- 					}
- 				%>	
- 				<%
- 					if ((int) (request.getAttribute("wrongAnswers")) ==4) {
- 				%>
-					<img src= "images/final.png" alt="IMG">
-						<%
- 					}
-					}
- 				%>	
+					<%
+						if (request.getAttribute("wrongAnswers") != null) {
+							if ((int) (request.getAttribute("wrongAnswers")) == 0) {
+					%>
+					<img src="images/1.png" alt="IMG">
+					<%
+						}
+					%>
+					<%
+						if ((int) (request.getAttribute("wrongAnswers")) == 1) {
+					%>
+					<img src="images/2.png" alt="IMG">
+					<%
+						}
+					%>
+					<%
+						if ((int) (request.getAttribute("wrongAnswers")) == 2) {
+					%>
+					<img src="images/3.png" alt="IMG">
+					<%
+						}
+					%>
+					<%
+						if ((int) (request.getAttribute("wrongAnswers")) == 3) {
+					%>
+					<img src="images/4.png" alt="IMG">
+					<%
+						}
+					%>
+					<%
+						if ((int) (request.getAttribute("wrongAnswers")) == 4) {
+					%>
+					<img src="images/final.png" alt="IMG">
+					<%
+						}
+							response.setHeader("Refresh", "3;url=meni");
+						}
+					%>
 				</div>
 				<div class="tastatura" style="float: right;">
 
 
-					<span class="login100-form-title"> Take a guess! <br>
-					<br>
+					<span class="login100-form-title"> Take a guess! <br> <br>
 						<p>
 							HINT:
 							<%
@@ -98,18 +96,13 @@
 							<%
 								}
 							%>
-						</p>
-						<span class="login100-form-title"> 
-							Word to guess:
-							<%
-							if (request.getAttribute("wordHolder") != null) {
-						%>
-							<%=request.getAttribute("wordHolder")%>
-							<%
-								}
-							%>
-						</span> 
-					
+						</p> <span class="login100-form-title"> Word to guess: <%
+ 	if (request.getAttribute("wordHolder") != null) {
+ %> <%=request.getAttribute("wordHolder")%> <%
+ 	}
+ %>
+					</span>
+
 						<p>
 							Number of Mistakes:
 							<%
@@ -139,16 +132,16 @@
 							<%
 								}
 							%>
-						</p> 
+						</p>
 						<p>
-						<%
- 					if (request.getAttribute("error") != null) {
- 				%> 
- 				<%=request.getAttribute("error")%>
- 				<%
- 					}
- 				%>
-					</p>
+							<%
+								if (request.getAttribute("error") != null) {
+							%>
+							<%=request.getAttribute("error")%>
+							<%
+								}
+							%>
+						</p>
 					</span>
 
 					<form action="GameServlet" method="post">

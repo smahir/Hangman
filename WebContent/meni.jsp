@@ -45,7 +45,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100-top10">
 				<div class="container-fluid">
-					<span class="login100-top10"> <%=session.getAttribute("username")%><br />
+					<span class="login100-top10"> Hi, <%=session.getAttribute("username")%><br />
 						<br />
 					</span>
 					<div class="row">
