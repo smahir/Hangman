@@ -9,7 +9,6 @@ import com.logic.dao.ConnectionManager;
 
 public class GameplayO {
 
-
 	private static String word;
 	private static String category;
 	private static String myWord;
@@ -30,8 +29,6 @@ public class GameplayO {
 		GameplayO.lives = lives;
 	}
 
-	
-	
 	public static String getPreviousGuesses() {
 		return previousGuesses;
 	}
@@ -41,7 +38,7 @@ public class GameplayO {
 	}
 
 	public static String getCategory() {
-		
+
 		return category;
 	}
 
@@ -49,7 +46,7 @@ public class GameplayO {
 		Connection connection = ConnectionManager.getInstance().getConnection();
 		String query = "SELECT name FROM categories WHERE category_id=?";
 		ResultSet rs = null;
-		String catWord= "";
+		String catWord = "";
 
 		try (PreparedStatement statement = connection.prepareStatement(query);) {
 
@@ -59,21 +56,20 @@ public class GameplayO {
 
 			if (rs.next()) {
 
-				
-				catWord=rs.getString("name");
+				catWord = rs.getString("name");
 				System.out.println(catWord);
 
 			}
-		
+
 			rs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		category = catWord;
-		
+
 	}
-	
+
 	public static int getLives() {
 		return lives;
 	}
@@ -85,8 +81,6 @@ public class GameplayO {
 	public static void setLetter(char letter) {
 		GameplayO.letter = Character.toUpperCase(letter);
 	}
-
-	
 
 	public static String getMyWord() {
 		return myWord;
@@ -106,17 +100,17 @@ public class GameplayO {
 
 	// Metode
 
-	// Metoda koja vraæa rezultat
+	// Metoda koja vraï¿½a rezultat
 	public static int result() {
 
-		//if (letters[GameplayO.getLetter() - 45]) {
+		// if (letters[GameplayO.getLetter() - 45]) {
 		System.out.println(previousGuesses);
-		if (previousGuesses.indexOf(GameplayO.getLetter())!=-1) {
+		if (previousGuesses.indexOf(GameplayO.getLetter()) != -1) {
 			return 1;
 
 		} else {
 
-			previousGuesses.concat(GameplayO.getLetter()+"");
+			previousGuesses.concat(GameplayO.getLetter() + "");
 			System.out.println(previousGuesses);
 			if (exists()) {
 				modifyMyWord();
@@ -132,16 +126,16 @@ public class GameplayO {
 		}
 	}
 
-	// Metoda postavlja onoliko crtica koliko je duga rijeè koja se pogaða
-	// Koristi se samo na poèetku kada se izvuèe nova rijeè
+	// Metoda postavlja onoliko crtica koliko je duga rijeï¿½ koja se pogaï¿½a
+	// Koristi se samo na poï¿½etku kada se izvuï¿½e nova rijeï¿½
 	public static void setCrtice() {
 		for (int i = 0; i < word.length(); i++) {
 			myWord = myWord + "_";
 		}
 	}
 
-	// Metoda postavlja sva slova na poziciju da nisu pogoðena
-	// Kotisi se na poèetku kada se izvuèe nova rijeè
+	// Metoda postavlja sva slova na poziciju da nisu pogoï¿½ena
+	// Kotisi se na poï¿½etku kada se izvuï¿½e nova rijeï¿½
 
 	public static boolean exists() {
 		for (int i = 0; i < word.length(); i++) {
