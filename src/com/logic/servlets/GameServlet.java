@@ -96,6 +96,7 @@ public class GameServlet extends HttpServlet {
 				GameplayO.setLives((GameplayO.getLives() + 1));
 				Message = "You did not guess a letter.";
 			}
+		
 		}
 
 		// set the wordHolder as an attribute
@@ -113,3 +114,4 @@ public class GameServlet extends HttpServlet {
 
 	}
 }
+

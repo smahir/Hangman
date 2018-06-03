@@ -50,15 +50,15 @@
 					</span>
 					<div class="row">
 						<div class="col">
-							<img src="images/final.png">
+							<img class="img-fluid" alt="hangman image" src="images/final.png">
 						</div>
 						<div class="col">
 							<ul class="nav flex-column">
-								<li class="nav-item"><a class="nav-link active" href="play">Play</a>
+								<li class="nav-item btn"><a class="nav-link active btn" href="play">Play</a>
 								</li>
-								<li class="nav-item"><a class="nav-link" href="top10">Top 10</a>
+								<li class="nav-item btn"><a class="nav-link btn" href="top10">Top 10</a>
 								</li>
-								<li class="nav-item"><a class="nav-link" href="LogoutServlet">Logout</a>
+								<li class="nav-item btn"><a class="nav-link btn" href="LogoutServlet">Logout</a>
 								</li>
 							</ul>
 
