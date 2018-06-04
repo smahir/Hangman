@@ -55,22 +55,24 @@ public class GameServlet extends HttpServlet {
 		String Message = "";
 
 		String sLetter = UserGuess;
-
-		if (sLetter.length() == 1) {
+		int i=0;
+		boolean pogodjeno= false;
+		while ((i<sLetter.length()) && (pogodjeno!=true)) {
+		//if (sLetter.length() == 1) {
 
 			// char letter = sLetter.charAt(0);
-			GameplayO.setLetter(sLetter.charAt(0));
+			GameplayO.setLetter(sLetter.charAt(i));
 
 			int result = GameplayO.result();
 			
 
 			if (result == 1) {
-				Message = "Letter is allready guessed.";
+				Message = "Letter is already guessed.";
 
 			} else if (result == 2) {
 				
 				if (GameplayO.getMyWord().compareTo(GameplayO.getWord()) == 0) {
-					// pogodjeno = true;
+					pogodjeno = true;
 					Message = "You win ! You have " + GameplayO.getPoints() + " points";
 					GameImplementation newGame = new GameImplementation();
 
@@ -81,7 +83,7 @@ public class GameServlet extends HttpServlet {
 						e.printStackTrace();
 					}
 					String helloMessage = "Hi, " + session.getAttribute("username") + "!";
-					req.setAttribute("helloMessage", helloMessage);
+				    req.setAttribute("helloMessage", helloMessage);
 					resp.setHeader("Refresh", "5;url=meni");
 //					if (GameplayO.getMyWord().compareTo(GameplayO.getWord()) == 0) {
 //						resp.setHeader("Refresh", "5;url=meni");
@@ -93,25 +95,22 @@ public class GameServlet extends HttpServlet {
 				// bodova ako profula slovo
 				// brojac++;
 				GameplayO.setLives((GameplayO.getLives() + 1));
-				Message = "You did not guess a letter.";
-				if (GameplayO.getLives() == 6) {
-					// pogodjeno = false;
+				
+				if (GameplayO.getLives() >= 6) {
+				    pogodjeno = false;
 					Message = "You lost. You're hanged.";
-					GameImplementation newGame = new GameImplementation();
-
-					try {
-						newGame.addGame(GameplayO.getPoints(), (int) session.getAttribute("user_id"));
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
 					String helloMessage = "Hi, " + session.getAttribute("username") + "!";
 					req.setAttribute("helloMessage", helloMessage);
+					
 					resp.setHeader("Refresh", "5;url=meni");
+					
+				} else {
+					Message = "You did not guess a letter.";
 				}
-			}
-		
-		}
+
+			};
+			i++;
+		} 	
 
 		// set the wordHolder as an attribute
 		// session.setAttribute("wordHolder",UserGuess);
@@ -125,6 +124,7 @@ public class GameServlet extends HttpServlet {
 
 		// forward to play jsp
 		req.getRequestDispatcher("play.jsp").forward(req, resp);
+
 
 	}
 }

@@ -90,7 +90,7 @@
 					}
  				%>
  				<%
- 					if ((int) (request.getAttribute("wrongAnswers")) ==6) {
+ 					if ((int) (request.getAttribute("wrongAnswers")) >=6) {
  				%>
 					<img src= "images/final.png" alt="IMG">
          
