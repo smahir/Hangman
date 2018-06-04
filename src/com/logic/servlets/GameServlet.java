@@ -110,6 +110,7 @@ public class GameServlet extends HttpServlet {
 					resp.setHeader("Refresh", "5;url=meni");
 				}
 			}
+		
 		}
 
 		// set the wordHolder as an attribute
@@ -127,3 +128,4 @@ public class GameServlet extends HttpServlet {
 
 	}
 }
+
