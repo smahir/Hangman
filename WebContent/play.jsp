@@ -44,44 +44,61 @@
 
 				</span>
 				<div class="login100-pic js-tilt" style="float: left;" data-tilt>
-					<%
-						if (request.getAttribute("wrongAnswers") != null) {
-							if ((int) (request.getAttribute("wrongAnswers")) == 0) {
-					%>
-					<img src="images/1.png" alt="IMG">
-					<%
-						}
-					%>
-					<%
-						if ((int) (request.getAttribute("wrongAnswers")) == 1) {
-					%>
-					<img src="images/2.png" alt="IMG">
-					<%
-						}
-					%>
-					<%
-						if ((int) (request.getAttribute("wrongAnswers")) == 2) {
-					%>
-					<img src="images/3.png" alt="IMG">
-					<%
-						}
-					%>
-					<%
-						if ((int) (request.getAttribute("wrongAnswers")) == 3) {
-					%>
-					<img src="images/4.png" alt="IMG">
-					<%
-						}
-					%>
-					<%
-						if ((int) (request.getAttribute("wrongAnswers")) == 4) {
-					%>
-					<img src="images/final.png" alt="IMG">
-					<%
-						}
-							response.setHeader("Refresh", "3;url=meni");
-						}
-					%>
+
+					<%if (request.getAttribute("wrongAnswers") !=null){
+ 					if ((int) (request.getAttribute("wrongAnswers")) ==0 ) {
+ 				%>
+					<img src= "images/1.png" alt="IMG">
+						<%
+ 					}
+ 				%>	
+ 				<%
+ 					if ((int) (request.getAttribute("wrongAnswers")) ==1 ) {
+ 				%>
+					<img src= "images/2.png" alt="IMG">
+						<%
+ 					}
+ 				%>	
+ 				<%
+ 					if ((int) (request.getAttribute("wrongAnswers")) ==2 ) {
+ 				%>
+					<img src= "images/3.png" alt="IMG">
+						<%
+ 					}
+ 				%>	
+ 				<%
+ 					if ((int) (request.getAttribute("wrongAnswers")) ==3 ) {
+ 				%>
+					<img src= "images/4.png" alt="IMG">
+						<%
+ 					}
+ 				%>	
+ 				<%
+ 					if ((int) (request.getAttribute("wrongAnswers")) ==4) {
+ 				%>
+					<img src= "images/5.png" alt="IMG">
+						<%
+ 					
+					}
+ 				%>	
+ 				<%
+ 					if ((int) (request.getAttribute("wrongAnswers")) ==5) {
+ 				%>
+					<img src= "images/6.png" alt="IMG">
+						<%
+ 					
+					}
+ 				%>
+ 				<%
+ 					if ((int) (request.getAttribute("wrongAnswers")) ==6) {
+ 				%>
+					<img src= "images/final.png" alt="IMG">
+         
+						<%
+ 					}
+					}
+ 				%>
+
 				</div>
 				<div class="tastatura" style="float: right;">
 

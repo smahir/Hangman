@@ -56,8 +56,7 @@ public class GameplayO {
 
 			if (rs.next()) {
 
-				catWord = rs.getString("name");
-				System.out.println(catWord);
+				catWord=rs.getString("name");
 
 			}
 
@@ -103,15 +102,16 @@ public class GameplayO {
 	// Metoda koja vra�a rezultat
 	public static int result() {
 
-		// if (letters[GameplayO.getLetter() - 45]) {
-		System.out.println(previousGuesses);
-		if (previousGuesses.indexOf(GameplayO.getLetter()) != -1) {
+		//if (letters[GameplayO.getLetter() - 45]) {
+		
+		if (previousGuesses.indexOf(GameplayO.getLetter())!=-1) {
 			return 1;
 
 		} else {
+			String added=previousGuesses+GameplayO.getLetter()+" ";
+			GameplayO.setPreviousGuesses(added);
+			
 
-			previousGuesses.concat(GameplayO.getLetter() + "");
-			System.out.println(previousGuesses);
 			if (exists()) {
 				modifyMyWord();
 				return 2;
