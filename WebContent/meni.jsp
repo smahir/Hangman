@@ -45,7 +45,13 @@
 		<div class="container-login100">
 			<div class="wrap-login100-top10">
 				<div class="container-fluid">
-					<span class="login100-top10"> <%=request.getAttribute("helloMessage")%><br />
+					<span class="login100-top10"> <%
+ 					if (request.getAttribute("helloMessage") != null) {
+ 				%> 
+ 				<%=request.getAttribute("helloMessage")%><br /> <br /> 
+ 				<%
+ 					}
+ 				%><br />
 						<br />
 					</span>
 					<div class="row">

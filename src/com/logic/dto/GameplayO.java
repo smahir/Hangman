@@ -61,7 +61,7 @@ public class GameplayO {
 
 				
 				catWord=rs.getString("name");
-				System.out.println(catWord);
+				
 
 			}
 		
@@ -110,14 +110,14 @@ public class GameplayO {
 	public static int result() {
 
 		//if (letters[GameplayO.getLetter() - 45]) {
-		System.out.println(previousGuesses);
+		
 		if (previousGuesses.indexOf(GameplayO.getLetter())!=-1) {
 			return 1;
 
 		} else {
-
-			previousGuesses.concat(GameplayO.getLetter()+"");
-			System.out.println(previousGuesses);
+			String added=previousGuesses+GameplayO.getLetter()+" ";
+			GameplayO.setPreviousGuesses(added);
+			
 			if (exists()) {
 				modifyMyWord();
 				return 2;

@@ -28,9 +28,7 @@ public class GameServlet extends HttpServlet {
 		// create a cart as arraylist for the user
 		String currentGuess = (String) session.getAttribute("UserGuess");
 		System.out.println(currentGuess);
-		/*
-		 * if(currentGuess==null){ currentGuess = ""; }
-		 */
+		
 
 		String message = "Prosao sam   " + currentGuess;
 		req.setAttribute("error", message);
@@ -64,13 +62,13 @@ public class GameServlet extends HttpServlet {
 			GameplayO.setLetter(sLetter.charAt(0));
 
 			int result = GameplayO.result();
-			System.out.println("result =" + result);
+			
 
 			if (result == 1) {
 				Message = "Letter is allready guessed.";
 
 			} else if (result == 2) {
-				// System.out.println(GameplayO.getMyWord());
+				
 				if (GameplayO.getMyWord().compareTo(GameplayO.getWord()) == 0) {
 					// pogodjeno = true;
 					Message = "You win ! You have " + GameplayO.getPoints() + " points";
@@ -82,19 +80,35 @@ public class GameServlet extends HttpServlet {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					if (GameplayO.getMyWord().compareTo(GameplayO.getWord()) == 0) {
-						resp.setHeader("Refresh", "5;url=meni");
-					}
+					String helloMessage = "Hi, " + session.getAttribute("username") + "!";
+					req.setAttribute("helloMessage", helloMessage);
+					resp.setHeader("Refresh", "5;url=meni");
+//					if (GameplayO.getMyWord().compareTo(GameplayO.getWord()) == 0) {
+//						resp.setHeader("Refresh", "5;url=meni");
+//					}
 				}
-//				if((int) (req.getAttribute("wrongAnswers")) == 4) {
-//					resp.setHeader("Refresh", "5;url=play");
-//				}
+
 			} else {
 				// Broja� se pove�ava da se zna koliko �e se korisniku oduzeti
 				// bodova ako profula slovo
 				// brojac++;
 				GameplayO.setLives((GameplayO.getLives() + 1));
 				Message = "You did not guess a letter.";
+				if (GameplayO.getLives() == 6) {
+					// pogodjeno = false;
+					Message = "You lost. You're hanged.";
+					GameImplementation newGame = new GameImplementation();
+
+					try {
+						newGame.addGame(GameplayO.getPoints(), (int) session.getAttribute("user_id"));
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					String helloMessage = "Hi, " + session.getAttribute("username") + "!";
+					req.setAttribute("helloMessage", helloMessage);
+					resp.setHeader("Refresh", "5;url=meni");
+				}
 			}
 		}
 
